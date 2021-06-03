@@ -1,6 +1,6 @@
 package co.com.sofka.crud.persistence.mapper;
 
-import co.com.sofka.crud.domain.ToDoDTO;
+import co.com.sofka.crud.domain.dto.ToDoDto;
 import co.com.sofka.crud.persistence.entity.ToDo;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -16,9 +16,9 @@ public interface ToDoMapper {
             @Mapping(source = "completed", target = "completed"),
             @Mapping(source = "groupListId", target = "groupListId")
     })
-    ToDoDTO toTodoDTO(ToDo toDo);
-    Iterable<ToDoDTO> toTodoDTOs (Iterable<ToDo> toDos);
+    ToDoDto toTodoDTO(ToDo toDo);
+    Iterable<ToDoDto> toTodoDTOs (Iterable<ToDo> toDos);
 
     @InheritInverseConfiguration
-    ToDo toTodo(ToDoDTO toDoDTO);
+    ToDo toTodo(ToDoDto toDoDTO);
 }

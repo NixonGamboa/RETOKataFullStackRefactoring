@@ -1,6 +1,6 @@
 package co.com.sofka.crud.domain.services;
 
-import co.com.sofka.crud.domain.ToDoDTO;
+import co.com.sofka.crud.domain.dto.ToDoDto;
 import co.com.sofka.crud.domain.repository.IToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,16 +11,16 @@ public class ToDoDTOService {
     @Autowired
     private IToDoRepository toDoRepository;
 
-    public Iterable<ToDoDTO> list(){
+    public Iterable<ToDoDto> list(){
         return toDoRepository.list();
     }
-    public ToDoDTO save(ToDoDTO toDoDTO){
+    public ToDoDto save(ToDoDto toDoDTO){
         return toDoRepository.save(toDoDTO);
     }
     public void delete(Long id){
         toDoRepository.delete(id);
     }
-    public ToDoDTO get(Long id){
+    public ToDoDto get(Long id){
         return toDoRepository.get(id);
     }
 

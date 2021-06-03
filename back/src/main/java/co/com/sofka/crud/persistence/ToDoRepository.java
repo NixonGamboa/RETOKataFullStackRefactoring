@@ -1,6 +1,6 @@
 package co.com.sofka.crud.persistence;
 
-import co.com.sofka.crud.domain.ToDoDTO;
+import co.com.sofka.crud.domain.dto.ToDoDto;
 import co.com.sofka.crud.domain.repository.IToDoRepository;
 import co.com.sofka.crud.persistence.crud.IToDoCrudRepository;
 import co.com.sofka.crud.persistence.entity.ToDo;
@@ -22,7 +22,7 @@ public class ToDoRepository implements IToDoRepository {
     // se hace la solicitud al CrudRepository quien devuelve entidades, (almacenamos las entidades en la lista todos)
     //  estas entidades las convertimos (mapeamos) en objetos de dominio para retornarlas al controlador.
     @Override
-    public Iterable<ToDoDTO> list(){
+    public Iterable<ToDoDto> list(){
         Iterable<ToDo> toDos = toDoCrudRepository.findAll();
         return mapper.toTodoDTOs(toDos);
     }
@@ -31,7 +31,7 @@ public class ToDoRepository implements IToDoRepository {
     // debemos transformar este DTO a una entidad, enviarsela al crudRepository que nos regresa una entidad,
     // mapeamos esta entidad de vuelta a DTo para retornarla al controller
     @Override
-    public ToDoDTO save(ToDoDTO toDoDTO){
+    public ToDoDto save(ToDoDto toDoDTO){
         ToDo toDo = mapper.toTodo(toDoDTO);
         return mapper.toTodoDTO(toDoCrudRepository.save(toDo));
     }
@@ -43,7 +43,7 @@ public class ToDoRepository implements IToDoRepository {
     }
 
     @Override
-    public ToDoDTO get(Long id){
+    public ToDoDto get(Long id){
         ToDo toDo = toDoCrudRepository.findById(id).orElseThrow();
          return mapper.toTodoDTO(toDo);
     }

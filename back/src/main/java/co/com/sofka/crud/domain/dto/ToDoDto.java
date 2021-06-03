@@ -1,6 +1,6 @@
-package co.com.sofka.crud.domain;
+package co.com.sofka.crud.domain.dto;
 
-public class ToDoDTO {
+public class ToDoDto {
     private Long id;
     private String name;
     private boolean completed;

@@ -1,13 +1,12 @@
 package co.com.sofka.crud.domain.repository;
 
-import co.com.sofka.crud.domain.ToDoDTO;
-import co.com.sofka.crud.persistence.entity.ToDo;
+import co.com.sofka.crud.domain.dto.ToDoDto;
 
 public interface IToDoRepository {
 
-    public Iterable<ToDoDTO> list();
-    public ToDoDTO save(ToDoDTO toDoDTO);
+    public Iterable<ToDoDto> list();
+    public ToDoDto save(ToDoDto toDoDTO);
     public void delete(Long id);
-    public ToDoDTO get(Long id);
+    public ToDoDto get(Long id);
 
 }
