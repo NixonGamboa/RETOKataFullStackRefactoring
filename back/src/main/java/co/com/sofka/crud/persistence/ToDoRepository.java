@@ -7,9 +7,7 @@ import co.com.sofka.crud.persistence.entity.ToDo;
 import co.com.sofka.crud.persistence.mapper.ToDoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Repository
 public class ToDoRepository implements IToDoRepository {
@@ -26,8 +24,6 @@ public class ToDoRepository implements IToDoRepository {
     @Override
     public Iterable<ToDoDTO> list(){
         Iterable<ToDo> toDos = toDoCrudRepository.findAll();
-        System.out.println("Exportando lista###############");
-        System.out.println(toDos);
         return mapper.toTodoDTOs(toDos);
     }
 
