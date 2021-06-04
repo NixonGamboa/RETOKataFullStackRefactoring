@@ -5,7 +5,7 @@ import co.com.sofka.crud.domain.dto.CategoryDto;
 public interface ICategoryRepository {
 
     public Iterable<CategoryDto> list();
-    public CategoryDto save(CategoryDto toDoDTO);
+    public CategoryDto save(CategoryDto categoryDto);
     public void delete(Long id);
     public CategoryDto get(Long id);
 }
