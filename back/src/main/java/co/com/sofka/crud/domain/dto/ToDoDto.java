@@ -1,5 +1,6 @@
 package co.com.sofka.crud.domain.dto;
 
+
 public class ToDoDto {
     private Long id;
     private String name;
@@ -37,4 +38,6 @@ public class ToDoDto {
     public void setGroupListId(String groupListId) {
         this.groupListId = groupListId;
     }
+
+
 }

@@ -1,17 +1,27 @@
 package co.com.sofka.crud.persistence.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "Category")
+@Table(name = "categories")
 public class Category {
     @Id
     @GeneratedValue
     private Long categoryId;
     private String categoryName;
+
+    @OneToMany(cascade = CascadeType.ALL,  orphanRemoval = true)
+    @JoinColumn(name = "categoryId")
+    private List<ToDo> toDos;
+
+    public List<ToDo> getToDos() {
+        return toDos;
+    }
+
+    public void setToDos(List<ToDo> toDos) {
+        this.toDos = toDos;
+    }
 
     public Long getCategoryId() {
         return categoryId;
@@ -28,4 +38,6 @@ public class Category {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
+
+
 }

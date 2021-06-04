@@ -1,8 +1,12 @@
 package co.com.sofka.crud.domain.dto;
 
+
+import java.util.List;
+
 public class CategoryDto {
     private Long categoryId;
     private String categoryName;
+    private List<ToDoDto> toDos;
 
     public Long getCategoryId() {
         return categoryId;
@@ -18,5 +22,13 @@ public class CategoryDto {
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    public List<ToDoDto> getToDos() {
+        return toDos;
+    }
+
+    public void setToDos(List<ToDoDto> toDos) {
+        this.toDos = toDos;
     }
 }
