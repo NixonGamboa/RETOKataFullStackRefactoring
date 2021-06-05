@@ -3,7 +3,7 @@ import Store from "./Store";
 import C from "../utils/constants";
 const HOST_API = C.HOST_API;
 
-const Form = () => {
+const Form = (props) => {
   const formRef = useRef(null);
   const {
     dispatch,
@@ -19,9 +19,10 @@ const Form = () => {
       name: state.name,
       id: null,
       completed: false,
+      groupListId: props.id,
     };
 
-    fetch(HOST_API + "/todo", {
+    fetch(HOST_API + "/save", {
       method: "POST",
       body: JSON.stringify(request),
       headers: {
@@ -29,10 +30,9 @@ const Form = () => {
       },
     })
       .then((response) => response.json())
-      .then((todo) => {
-        dispatch({ type: "add-item", item: todo });
-        setState({ name: "" });
-        formRef.current.reset();
+      .then((categories) => {
+        console.log(categories);
+        dispatch({ type: "update-categories", categories });
       });
   };
 
