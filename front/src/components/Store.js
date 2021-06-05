@@ -13,7 +13,10 @@ function reducer(state, action) {
       return { ...state, todo: stateData };
     case "add-category":
       const listCategory = state.todo.list;
+      console.log(listCategory);
+      console.log(action);
       listCategory.push(action.item);
+      console.log(listCategory);
       return { ...state, todo: { list: listCategory, item: {} } };
     case "update-item":
       const todoUpItem = state.todo;

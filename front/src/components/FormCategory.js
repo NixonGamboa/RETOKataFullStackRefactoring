@@ -16,8 +16,9 @@ const FormCategory = () => {
     event.preventDefault();
 
     const request = {
-      categoryName: state.name,
+      categoryName: state.name.toUpperCase(),
       id: null,
+      toDos: [],
     };
 
     fetch(HOST_API + "/categories/save", {
