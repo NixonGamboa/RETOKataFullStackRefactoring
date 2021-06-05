@@ -31,8 +31,9 @@ const Form = (props) => {
     })
       .then((response) => response.json())
       .then((categories) => {
-        console.log(categories);
         dispatch({ type: "update-categories", categories });
+        setState({ name: "" });
+        formRef.current.reset();
       });
   };
 

@@ -9,11 +9,12 @@ const HOST_API = C.HOST_API;
 const Category = (props) => {
   const { dispatch } = useContext(Store);
 
-  const onDelete = (id) => {
-    fetch(HOST_API + "/" + id + "/todo", {
+  const onDelete = (event, id) => {
+    event.preventDefault();
+    fetch(HOST_API + "/categories/delete/" + id, {
       method: "DELETE",
-    }).then((list) => {
-      dispatch({ type: "delete-item", id });
+    }).then(() => {
+      dispatch({ type: "delete-category", id });
     });
   };
 
@@ -22,7 +23,9 @@ const Category = (props) => {
     <li>
       <div>
         <h3>{data.categoryName}</h3>
-        <button onClick={() => onDelete(data.id)}>EliminarCategoria</button>
+        <button onClick={(event) => onDelete(event, data.id)}>
+          EliminarCategoria
+        </button>
       </div>
       <div>
         <Form id={data.id} />

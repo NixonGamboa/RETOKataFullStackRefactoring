@@ -13,11 +13,15 @@ function reducer(state, action) {
       return { ...state, todo: stateData };
     case "add-category":
       const listCategory = state.todo.list;
-      console.log(listCategory);
-      console.log(action);
       listCategory.push(action.item);
-      console.log(listCategory);
       return { ...state, todo: { list: listCategory, item: {} } };
+    case "delete-category":
+      const categoryList = state.todo;
+      const categoriesUpdate = categoryList.list.filter((item) => {
+        return item.id !== action.id;
+      });
+      categoryList.list = categoriesUpdate;
+      return { ...state, todo: categoryList };
     case "update-item":
       const todoUpItem = state.todo;
       const listUpdateEdit = todoUpItem.list.map((item) => {
