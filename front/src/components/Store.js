@@ -8,18 +8,14 @@ function reducer(state, action) {
   switch (action.type) {
     case "update-categories":
       const stateData = state.todo;
-      /*const listUpdateEdit = stateData.list.map((item) => {
-        if (item.id === action.item.id) {
-          return action.item;
-        }
-        return item;
-      });*/
       stateData.list = action.categories;
-      console.log("action");
-      console.log(action);
       stateData.item = {};
       return { ...state, todo: stateData };
-    /*case "update-item":
+    case "add-category":
+      const listCategory = state.todo.list;
+      listCategory.push(action.item);
+      return { ...state, todo: { list: listCategory, item: {} } };
+    case "update-item":
       const todoUpItem = state.todo;
       const listUpdateEdit = todoUpItem.list.map((item) => {
         if (item.id === action.item.id) {
@@ -49,7 +45,7 @@ function reducer(state, action) {
       const todoUp = state.todo.list;
       todoUp.push(action.item);
       return { ...state, todo: { list: todoUp, item: {} } };
-    */
+
     default:
       return state;
   }

@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import Store from "./Store";
 import C from "../utils/constants";
+import FormCategory from "./FormCategory";
+import Category from "./Category";
 import List from "./List";
 const HOST_API = C.HOST_API;
 
@@ -21,44 +23,15 @@ const ListCategories = () => {
       });
   }, [dispatch]);
 
-  const onDelete = (id) => {
-    fetch(HOST_API + "/" + id + "/todo", {
-      method: "DELETE",
-    }).then((list) => {
-      dispatch({ type: "delete-item", id });
-    });
-  };
-
   return (
     <div>
+      <h2 style={{ backgroundColor: "lightblue" }}>MIS TAREAS...</h2>
+      <FormCategory />
       <table>
-        <thead>
-          <tr>
-            <td>ID</td>
-            <td>Tarea</td>
-            <td>¿Completado?</td>
-          </tr>
-        </thead>
         <tbody>
-          {
-            ((console.log("Estado"),
-            console.log(todo),
-            console.log("CategoryList"),
-            console.log(categoryList)),
-            categoryList.map((category) => {
-              return (
-                <tr key={category.categoryId}>
-                  <td>{category.categoryId}</td>
-                  <td>{category.categoryName}</td>
-                  <td>
-                    <button onClick={() => onDelete(category.categoryId)}>
-                      Eliminar
-                    </button>
-                  </td>
-                </tr>
-              );
-            }))
-          }
+          {categoryList.map((category) => {
+            return <Category key={category.id} categoryData={category} />;
+          })}
         </tbody>
       </table>
     </div>

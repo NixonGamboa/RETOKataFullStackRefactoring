@@ -6,8 +6,6 @@ import ListCategories from "./components/ListCategories";
 function App() {
   return (
     <StoreProvider>
-      <h3>To-Do List</h3>
-      <Form />
       <ListCategories />
     </StoreProvider>
   );
