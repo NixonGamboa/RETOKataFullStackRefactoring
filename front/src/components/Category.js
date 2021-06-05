@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Store from "./Store";
 import C from "../utils/constants";
 import List from "./List";
@@ -16,19 +16,16 @@ const Category = (props) => {
   };
 
   const data = props.categoryData;
-  console.log("cada categoria " + data);
   return (
-    <div>
-      <table>
-        <tr>
-          <td>{data.id}</td>
-          <td>{data.categoryName}</td>
-          <td>
-            <button onClick={() => onDelete(data.id)}>Eliminar</button>
-          </td>
-        </tr>
-      </table>
-    </div>
+    <li>
+      <div>
+        <h3>{data.categoryName}</h3>
+        <button onClick={() => onDelete(data.id)}>EliminarCategoria</button>
+      </div>
+      <div>
+        <List todos={data.toDos} />
+      </div>
+    </li>
   );
 };
 export default Category;

@@ -3,7 +3,6 @@ import Store from "./Store";
 import C from "../utils/constants";
 import FormCategory from "./FormCategory";
 import Category from "./Category";
-import List from "./List";
 const HOST_API = C.HOST_API;
 
 const ListCategories = () => {
@@ -17,8 +16,6 @@ const ListCategories = () => {
     fetch(HOST_API + "/categories")
       .then((response) => response.json())
       .then((categories) => {
-        console.log("Lo que llega en el Json");
-        console.log(categories);
         dispatch({ type: "update-categories", categories });
       });
   }, [dispatch]);
@@ -27,13 +24,10 @@ const ListCategories = () => {
     <div>
       <h2 style={{ backgroundColor: "lightblue" }}>MIS TAREAS...</h2>
       <FormCategory />
-      <table>
-        <tbody>
-          {categoryList.map((category) => {
-            return <Category key={category.id} categoryData={category} />;
-          })}
-        </tbody>
-      </table>
+
+      {categoryList.map((category) => {
+        return <Category key={category.id} categoryData={category} />;
+      })}
     </div>
   );
 };
