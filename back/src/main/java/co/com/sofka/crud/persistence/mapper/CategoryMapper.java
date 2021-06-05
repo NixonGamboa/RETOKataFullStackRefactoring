@@ -10,7 +10,7 @@ import org.mapstruct.Mappings;
 @Mapper(componentModel = "spring", uses = {ToDoMapper.class})
 public interface CategoryMapper {
     @Mappings({
-            @Mapping(source = "categoryId", target = "categoryId"),
+            @Mapping(source = "categoryId", target = "id"),
             @Mapping(source = "categoryName", target = "categoryName"),
             @Mapping(source = "toDos", target = "toDos")
     })

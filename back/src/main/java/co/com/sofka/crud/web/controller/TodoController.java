@@ -1,6 +1,8 @@
 package co.com.sofka.crud.web.controller;
 
+import co.com.sofka.crud.domain.dto.CategoryDto;
 import co.com.sofka.crud.domain.dto.ToDoDto;
+import co.com.sofka.crud.domain.services.CategoryDTOService;
 import co.com.sofka.crud.domain.services.ToDoDTOService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,14 +15,18 @@ public class TodoController {
     @Autowired
     private ToDoDTOService service;
 
+    @Autowired
+    private CategoryDTOService categoryService;
+
     @GetMapping(value = "/todos")
     public Iterable<ToDoDto> list(){
         return service.list();
     }
     
-    @PostMapping(value = "/todo")
-    public ToDoDto save(@RequestBody ToDoDto toDoDTO){
-        return service.save(toDoDTO);
+    @PostMapping(value = "/save")
+    public Iterable<CategoryDto> save(@RequestBody ToDoDto toDoDTO){
+        service.save(toDoDTO);
+        return categoryService.list() ;
     }
 
     @PutMapping(value = "/todo")
